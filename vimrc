@@ -59,6 +59,7 @@ Plugin 'nvie/vim-flake8'
 " --- Extra
 " ---------------------------------------
 Bundle 'wakatime/vim-wakatime'
+Plugin 'tpope/vim-fugitive'
 
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
