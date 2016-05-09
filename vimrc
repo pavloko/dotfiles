@@ -42,14 +42,15 @@ Plugin 'marijnh/tern_for_vim'
 
 " --- Web Development
 " ---------------------------------------
+Plugin 'SirVer/ultisnips'
 Plugin 'mattn/emmet-vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'skammer/vim-css-color'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'honza/vim-snippets'
-Plugin 'shutnik/jshint2.vim'
-Plugin 'scrooloose/syntastic'
+Plugin 'mxw/vim-jsx'
+Plugin 'justinj/vim-react-snippets'
 
 " --- Python Development
 " ---------------------------------------
@@ -59,7 +60,6 @@ Plugin 'nvie/vim-flake8'
 " --- Extra
 " ---------------------------------------
 Bundle 'wakatime/vim-wakatime'
-Plugin 'tpope/vim-fugitive'
 
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -78,6 +78,7 @@ autocmd FileType make setlocal noexpandtab
 
 " In Ruby files, use 2 spaces instead of 4 for tabs
 autocmd FileType ruby setlocal sw=2 ts=2 sts=2
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 03. Theme/Colors
@@ -124,14 +125,7 @@ set ruler                 " Always show info along bottom.
 set showmatch
 set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
 set visualbell
-
-" SEARCH OPTIONS ----------------------------------
-" set hlsearch                      " highlight all matches
-" set incsearch                     " incrementally start searching before hitting enter
-" set ignorecase                    " ignore case
-" set smartcase                     " ignore when only lower case
-" set gdefault                      " default to global search&replace
-" nnoremap <esc> :noh<return><esc>  " use ESC to remove search highlight
+nnoremap <esc> :noh<return><esc>  " use ESC to remove search highlight
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -226,13 +220,3 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Better Whitespace strip on Save
 autocmd BufWritePre * StripWhitespace
-
-" Syntatic Settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0

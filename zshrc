@@ -1,5 +1,8 @@
+# Android Development
+export ANDROID_HOME=$HOME/Library/Android/sdk
+
 # PATH SETTINGS
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -26,11 +29,15 @@ alias ga='git add '
 alias gb='git branch '
 alias gc='git commit'
 alias gd='git diff'
-alias go='git checkout '
+alias gh='git checkout '
 alias gk='gitk --all&'
 alias gx='gitx --all'
 alias got='git '
 alias get='git '
+
+## Vim Alias
+alias vim='mvim'
+alias vi='mvim -v'
 
 # Custom exports
 ## Set EDITOR to /usr/bin/vim if Vim is installed
