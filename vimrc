@@ -42,7 +42,7 @@ Plugin 'marijnh/tern_for_vim'
 
 " --- Web Development
 " ---------------------------------------
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 Plugin 'mattn/emmet-vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'skammer/vim-css-color'
@@ -56,6 +56,10 @@ Plugin 'justinj/vim-react-snippets'
 " ---------------------------------------
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
+
+" --- Go Development
+" ---------------------------------------
+Plugin 'fatih/vim-go'
 
 " --- Extra
 " ---------------------------------------
@@ -86,6 +90,7 @@ autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 syntax enable           " enable syntax highlighting (previously syntax on).
 set t_Co=256            " enable 256-color mode.
 set background=dark
+let g:solarized_termcolors = 256
 colorscheme solarized   " set colorscheme
 highlight clear
 
@@ -220,3 +225,14 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Better Whitespace strip on Save
 autocmd BufWritePre * StripWhitespace
+
+" Highlight JSX in .JS files
+let g:jsx_ext_required=0
+
+" Go Development setup
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1

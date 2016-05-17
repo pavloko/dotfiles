@@ -1,8 +1,8 @@
 # Android Development
 export ANDROID_HOME=$HOME/Library/Android/sdk
-
+export GOPATH=$HOME/Development/Go
 # PATH SETTINGS
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools:${GOPATH}/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
