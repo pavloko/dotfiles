@@ -88,11 +88,13 @@ autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 " 03. Theme/Colors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable           " enable syntax highlighting (previously syntax on).
-set t_Co=256            " enable 256-color mode.
+" set t_Co=256            " enable 256-color mode.
 set background=dark
-let g:solarized_termcolors = 256
+let g:solarized_termcolors = 16
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
 colorscheme solarized   " set colorscheme
-highlight clear
+" highlight clear
 
 " Prettify JSON files
 autocmd BufRead,BufNewFile *.json set filetype=json

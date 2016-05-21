@@ -44,3 +44,6 @@ alias vi='mvim -v'
 if [ -f /usr/bin/vim ]; then
   export EDITOR=/usr/bin/vim
 fi
+
+# Tmux colors
+alias tmux="TERM=screen-256color-bce tmux"
