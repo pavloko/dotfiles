@@ -24,6 +24,7 @@ alias cd...='cd ../..'
 source $ZSH/oh-my-zsh.sh
 
 ## Git Aliases
+alias gd='git diff | subl'
 alias gs='git status '
 alias ga='git add '
 alias gb='git branch '

@@ -26,19 +26,23 @@ filetype off
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 " --- Tools
 " ---------------------------------------
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vim-airline/vim-airline'
+Plugin 'valloric/youcompleteme'
+Plugin 'kien/ctrlp.vim'                    " Quick fileopen via CTRL+P
+Plugin 'tpope/vim-fugitive'                " Git wrapper
+Plugin 'airblade/vim-gitgutter'            " Show git diff in files
+Plugin 'tmhedberg/SimpylFold'              " Simplifies code folding
+Plugin 'scrooloose/syntastic'              " Syntax checker
 Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
-Plugin 'Raimondi/delimitMate'
-Plugin 'kien/ctrlp.vim'
+Plugin 'Raimondi/delimitMate'              " Auto adds closing tags.
 Plugin 'marijnh/tern_for_vim'
+Plugin 'altercation/vim-colors-solarized'  " Theme
 
 " --- Web Development
 " ---------------------------------------
@@ -50,7 +54,6 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'mxw/vim-jsx'
-Plugin 'justinj/vim-react-snippets'
 
 " --- Python Development
 " ---------------------------------------
@@ -83,7 +86,6 @@ autocmd FileType make setlocal noexpandtab
 " In Ruby files, use 2 spaces instead of 4 for tabs
 autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 03. Theme/Colors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -95,10 +97,6 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 colorscheme solarized   " set colorscheme
 " highlight clear
-
-" Prettify JSON files
-autocmd BufRead,BufNewFile *.json set filetype=json
-autocmd Syntax json sou ~/.vim/syntax/json.vim
 
 " Prettify Vagrantfile
 autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
@@ -119,7 +117,7 @@ else
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 04. Vim UI
+" 04. Vim Theme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set number                " show line numbers
 set numberwidth=6         " make the number gutter 6 characters wide
@@ -133,7 +131,8 @@ set showmatch
 set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
 set visualbell
 nnoremap <esc> :noh<return><esc>  " use ESC to remove search highlight
-
+set lazyredraw            " Optimize performace
+set ttyfast
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 05. Vim UI
@@ -157,7 +156,6 @@ command PrettyJSON %!python -m json.tool
 
 " Enable folding with the spacebar
 nnoremap <space> za
-
 
 " Enable folding
 set foldmethod=indent
@@ -200,7 +198,49 @@ function! HelpInNewTab()
   endif
 endfunction
 
+" remove the .ext~ files, but not the swapfiles
+set nobackup writebackup
+set noswapfile
 
+" Emmet config
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall   " only css and html
+
+" Better Whitespace strip on Save
+autocmd BufWritePre * StripWhitespace
+
+" Highlight JSX in .JS files
+let g:jsx_ext_required=0
+" Tern Settings
+let g:tern_map_keys = 1
+let g:tern_show_arguments_hints = 'on_hold'
+
+" Go Development setup
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+" Syntastic Settings
+autocmd FileType javascript let b:syntastic_checkers =
+       \ findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['jshint']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_disabled_filetypes = ['html']
+let g:syntastic_ignore_files = ['*.html']
+let g:syntastic_mode_map={ 'mode': 'active',
+                         \ 'active_filetypes': [],
+                         \ 'passive_filetypes': ['html'] }
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" GUI SETUP
 if has('gui_running')
   syntax on
   set hlsearch
@@ -213,28 +253,3 @@ if has('gui_running')
   " set guioptions-=r     " remove right-hand scroll bar
   set guioptions-=L     " remove left-hand scroll bar
 endif
-
-" Set GUI Font
-set guifont=Menlo:h16
-set background=dark
-
-" remove the .ext~ files, but not the swapfiles
-set nobackup writebackup
-set noswapfile
-
-" Emmet config
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-
-" Better Whitespace strip on Save
-autocmd BufWritePre * StripWhitespace
-
-" Highlight JSX in .JS files
-let g:jsx_ext_required=0
-
-" Go Development setup
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
