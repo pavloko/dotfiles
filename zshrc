@@ -1,5 +1,6 @@
 # Android Development
 export ANDROID_HOME=$HOME/Library/Android/sdk
+# Go Development
 export GOPATH=$HOME/Development/Go
 # PATH SETTINGS
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools:${GOPATH}/bin"
@@ -23,7 +24,7 @@ alias cd..='cd ..'
 alias cd...='cd ../..'
 source $ZSH/oh-my-zsh.sh
 
-## Git Aliases
+# Git Aliases
 alias gd='git diff | subl'
 alias gs='git status '
 alias ga='git add '
@@ -36,12 +37,18 @@ alias gx='gitx --all'
 alias got='git '
 alias get='git '
 
-## Vim Alias
+# Vim Alias
 alias vim='mvim'
 alias vi='mvim -v'
 
+# Tmux Alias
+alias tl='tmux ls'
+alias ta='tmux attach -t '
+alias tn='tmux new -s '
+alias tk='tmux kill-session -t '
+
 # Custom exports
-## Set EDITOR to /usr/bin/vim if Vim is installed
+# Set EDITOR to /usr/bin/vim if Vim is installed
 if [ -f /usr/bin/vim ]; then
   export EDITOR=/usr/bin/vim
 fi
