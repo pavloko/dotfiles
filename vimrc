@@ -29,48 +29,51 @@ call vundle#begin()
 
 " --- Tools
 " ---------------------------------------
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'scrooloose/nerdtree'
-"  Plugin 'jistr/vim-nerdtree-tabs'
-"  Plugin 'valloric/youcompleteme'
-"  Plugin 'shougo/neocomplete.vim'            " Syntax completition
-"  Plugin 'ctrlpvim/ctrlp.vim'                " Quick fileopen via CTRL+P
-"  Plugin 'tmhedberg/SimpylFold'              " Simplifies code folding
-"  Plugin 'scrooloose/syntastic'              " Syntax checker
-"  Plugin 'ntpeters/vim-better-whitespace'
-"  Plugin 'tpope/vim-surround'
-"  Plugin 'Raimondi/delimitMate'              " Auto adds closing tags.
-"  Plugin 'marijnh/tern_for_vim'
-"  Plugin 'altercation/vim-colors-solarized'  " Theme
-"
-"  " --- Git
-"  Plugin 'tpope/vim-fugitive'                " Git wrapper
-"  Plugin 'airblade/vim-gitgutter'            " Show git diff in files
-"  Plugin 'Xuyuanp/nerdtree-git-plugin'       " Mark git changes in nerdTree
-"
+Plugin 'vim-airline/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'valloric/youcompleteme'
+Plugin 'shougo/neocomplete.vim'            " Syntax completition
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'ctrlpvim/ctrlp.vim'                " Quick fileopen via CTRL+P
+Plugin 'tmhedberg/SimpylFold'              " Simplifies code folding
+Plugin 'scrooloose/syntastic'              " Syntax checker
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'tpope/vim-surround'
+Plugin 'Raimondi/delimitMate'              " Auto adds closing tags.
+Plugin 'marijnh/tern_for_vim'
+Plugin 'altercation/vim-colors-solarized'  " Theme
+
+" --- Git
+Plugin 'tpope/vim-fugitive'                " Git wrapper
+Plugin 'airblade/vim-gitgutter'            " Show git diff in files
+Plugin 'Xuyuanp/nerdtree-git-plugin'       " Mark git changes in nerdTree
+
 "  " --- Web Development
 "  " ---------------------------------------
-"  Plugin 'valloric/matchtagalways'          " Shows current tag in HTML
-"  Plugin 'mattn/emmet-vim'
-"  Plugin 'hail2u/vim-css3-syntax'
-"  Plugin 'skammer/vim-css-color'
-"  Plugin 'pangloss/vim-javascript'
-"  Plugin 'othree/javascript-libraries-syntax.vim'
-"  Plugin 'honza/vim-snippets'
-"  Plugin 'mxw/vim-jsx'
-"
-"  " --- Python Development
-"  " ---------------------------------------
-"  Plugin 'vim-scripts/indentpython.vim'
-"  Plugin 'nvie/vim-flake8'
-"
-"  " --- Go Development
-"  " ---------------------------------------
-"  Plugin 'fatih/vim-go'
-"
-"  " --- Extra
-"  " ---------------------------------------
-"  Bundle 'wakatime/vim-wakatime'
+Plugin 'valloric/matchtagalways'          " Shows current tag in HTML
+Plugin 'mattn/emmet-vim'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'skammer/vim-css-color'
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'honza/vim-snippets'
+Plugin 'mxw/vim-jsx'
+Plugin 'quramy/tsuquyomi'                 " TypeScript
+
+" --- Python Development
+" ---------------------------------------
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'nvie/vim-flake8'
+
+" --- Go Development
+" ---------------------------------------
+Plugin 'fatih/vim-go'
+
+" --- Extra
+" ---------------------------------------
+Bundle 'wakatime/vim-wakatime'
 
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -95,10 +98,10 @@ autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable           " enable syntax highlighting (previously syntax on).
 set background=dark
-" let g:solarized_termcolors = 16
+let g:solarized_termcolors = 16
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
-" colorscheme solarized   " set colorscheme
+colorscheme solarized   " set colorscheme
 
 " Prettify Vagrantfile
 autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
@@ -181,8 +184,6 @@ EOF
 " NERDTree Settings
 let NERDTreeIgnore=['\.pyc$', '\~$'] " ignore files in NERDTree
 map <C-\> :NERDTreeToggle<CR>
-" autocmd VimEnter * NERDTree
-" autocmd VimEnter * wincmd p
 
 " Code Stylings
 let python_highlight_all=1
@@ -213,7 +214,9 @@ autocmd BufWritePre * StripWhitespace
 
 " Highlight JSX in .JS files
 let g:jsx_ext_required=0
+
 " Tern Settings
+set omnifunc=syntaxcomplete#Complete
 let g:tern_map_keys = 1
 let g:tern_show_arguments_hints = 'on_hold'
 
@@ -245,16 +248,18 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['eslint']
 
-" GUI SETUP
-if has('gui_running')
-  syntax on
-  set hlsearch
-"  colorscheme solarized
-  set bs=2
-  set ai
-  set ruler
-  set guioptions-=m     " remove menu bar
-  set guioptions-=T     " remove toolbar
-  " set guioptions-=r     " remove right-hand scroll bar
-  set guioptions-=L     " remove left-hand scroll bar
-endif
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
