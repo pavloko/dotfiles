@@ -3,3 +3,8 @@
   email = pavlo.kochubei@hotmail.com
 [credential]
 	helper = osxkeychain
+[alias]
+	sla = log --oneline --decorate --graph --all
+	glog = log -E -i --grep
+[core]
+	editor = vi

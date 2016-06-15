@@ -29,44 +29,48 @@ call vundle#begin()
 
 " --- Tools
 " ---------------------------------------
-Plugin 'vim-airline/vim-airline'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'valloric/youcompleteme'
-Plugin 'kien/ctrlp.vim'                    " Quick fileopen via CTRL+P
-Plugin 'tpope/vim-fugitive'                " Git wrapper
-Plugin 'airblade/vim-gitgutter'            " Show git diff in files
-Plugin 'tmhedberg/SimpylFold'              " Simplifies code folding
-Plugin 'scrooloose/syntastic'              " Syntax checker
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'tpope/vim-surround'
-Plugin 'Raimondi/delimitMate'              " Auto adds closing tags.
-Plugin 'marijnh/tern_for_vim'
-Plugin 'altercation/vim-colors-solarized'  " Theme
-
-" --- Web Development
-" ---------------------------------------
-" Plugin 'SirVer/ultisnips'
-Plugin 'mattn/emmet-vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'skammer/vim-css-color'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'honza/vim-snippets'
-Plugin 'mxw/vim-jsx'
-
-" --- Python Development
-" ---------------------------------------
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'nvie/vim-flake8'
-
-" --- Go Development
-" ---------------------------------------
-Plugin 'fatih/vim-go'
-
-" --- Extra
-" ---------------------------------------
-Bundle 'wakatime/vim-wakatime'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'scrooloose/nerdtree'
+"  Plugin 'jistr/vim-nerdtree-tabs'
+"  Plugin 'valloric/youcompleteme'
+"  Plugin 'shougo/neocomplete.vim'            " Syntax completition
+"  Plugin 'ctrlpvim/ctrlp.vim'                " Quick fileopen via CTRL+P
+"  Plugin 'tmhedberg/SimpylFold'              " Simplifies code folding
+"  Plugin 'scrooloose/syntastic'              " Syntax checker
+"  Plugin 'ntpeters/vim-better-whitespace'
+"  Plugin 'tpope/vim-surround'
+"  Plugin 'Raimondi/delimitMate'              " Auto adds closing tags.
+"  Plugin 'marijnh/tern_for_vim'
+"  Plugin 'altercation/vim-colors-solarized'  " Theme
+"
+"  " --- Git
+"  Plugin 'tpope/vim-fugitive'                " Git wrapper
+"  Plugin 'airblade/vim-gitgutter'            " Show git diff in files
+"  Plugin 'Xuyuanp/nerdtree-git-plugin'       " Mark git changes in nerdTree
+"
+"  " --- Web Development
+"  " ---------------------------------------
+"  Plugin 'valloric/matchtagalways'          " Shows current tag in HTML
+"  Plugin 'mattn/emmet-vim'
+"  Plugin 'hail2u/vim-css3-syntax'
+"  Plugin 'skammer/vim-css-color'
+"  Plugin 'pangloss/vim-javascript'
+"  Plugin 'othree/javascript-libraries-syntax.vim'
+"  Plugin 'honza/vim-snippets'
+"  Plugin 'mxw/vim-jsx'
+"
+"  " --- Python Development
+"  " ---------------------------------------
+"  Plugin 'vim-scripts/indentpython.vim'
+"  Plugin 'nvie/vim-flake8'
+"
+"  " --- Go Development
+"  " ---------------------------------------
+"  Plugin 'fatih/vim-go'
+"
+"  " --- Extra
+"  " ---------------------------------------
+"  Bundle 'wakatime/vim-wakatime'
 
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -90,13 +94,11 @@ autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 " 03. Theme/Colors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable           " enable syntax highlighting (previously syntax on).
-" set t_Co=256            " enable 256-color mode.
 set background=dark
-let g:solarized_termcolors = 16
+" let g:solarized_termcolors = 16
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
-colorscheme solarized   " set colorscheme
-" highlight clear
+" colorscheme solarized   " set colorscheme
 
 " Prettify Vagrantfile
 autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
@@ -233,18 +235,21 @@ set statusline+=%*
 let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_ignore_files = ['*.html']
 let g:syntastic_mode_map={ 'mode': 'active',
-                         \ 'active_filetypes': [],
+                         \ 'active_filetypes': ['python', 'javascript'],
                          \ 'passive_filetypes': ['html'] }
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " GUI SETUP
 if has('gui_running')
   syntax on
   set hlsearch
-  colorscheme solarized
+"  colorscheme solarized
   set bs=2
   set ai
   set ruler

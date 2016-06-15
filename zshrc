@@ -13,16 +13,21 @@ ZSH_THEME="robbyrussell"
 
 # Virtual Environment
 export WORKON_HOME=$HOME/Development/Python/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
+export PROJECT_HOME=$HOME/Projects/ml
 source /usr/local/bin/virtualenvwrapper.sh
 
 # Shell Aliases
 # General
 alias zconf="vi ~/.zshrc"
 alias ll='ls -al'
-alias cd..='cd ..'
-alias cd...='cd ../..'
+alias ..='cd ..'
+alias ...='cd ../..'
 source $ZSH/oh-my-zsh.sh
+
+# mv, rm, cp
+alias mv='mv -v'
+alias rm='rm -i -v'
+alias cp='cp -v'
 
 # Git Aliases
 alias gd='git diff | subl'
