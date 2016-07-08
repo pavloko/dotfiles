@@ -55,7 +55,6 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'       " Mark git changes in nerdTree
 Plugin 'valloric/matchtagalways'          " Shows current tag in HTML
 Plugin 'mattn/emmet-vim'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'skammer/vim-css-color'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'honza/vim-snippets'
@@ -70,10 +69,6 @@ Plugin 'nvie/vim-flake8'
 " --- Go Development
 " ---------------------------------------
 Plugin 'fatih/vim-go'
-
-" --- Extra
-" ---------------------------------------
-Bundle 'wakatime/vim-wakatime'
 
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -238,12 +233,12 @@ set statusline+=%*
 let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_ignore_files = ['*.html']
 let g:syntastic_mode_map={ 'mode': 'active',
-                         \ 'active_filetypes': ['python', 'javascript'],
-                         \ 'passive_filetypes': ['html'] }
+                         \ 'active_filetypes': [],
+                         \ 'passive_filetypes': ['html', 'python', 'javascript'] }
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['eslint']
