@@ -4,6 +4,9 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export GOPATH=$HOME/Development/Go
 # PATH SETTINGS
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools:${GOPATH}/bin"
+# NVM
+export NVM_DIR="$HOME/.nvm"
+source $(brew --prefix nvm)/nvm.sh
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -22,6 +25,7 @@ alias zconf="vi ~/.zshrc"
 alias ll='ls -al'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias cd..='cd ..'
 source $ZSH/oh-my-zsh.sh
 
 # mv, rm, cp
@@ -30,12 +34,11 @@ alias rm='rm -i -v'
 alias cp='cp -v'
 
 # Git Aliases
-alias gd='git diff | subl'
+alias gd='git diff'
 alias gs='git status '
 alias ga='git add '
 alias gb='git branch '
 alias gc='git commit'
-alias gd='git diff'
 alias gh='git checkout '
 alias gk='gitk --all&'
 alias gx='gitx --all'

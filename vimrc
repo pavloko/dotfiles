@@ -60,6 +60,9 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'mxw/vim-jsx'
 Plugin 'quramy/tsuquyomi'                 " TypeScript
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'othree/yajs.vim'
 
 " --- Python Development
 " ---------------------------------------
@@ -131,8 +134,8 @@ set showmatch
 set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
 set visualbell
 nnoremap <esc> :noh<return><esc>  " use ESC to remove search highlight
-set lazyredraw            " Optimize performace
-set ttyfast
+" set lazyredraw            " Optimize performace
+" set ttyfast
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 05. Vim UI
@@ -223,6 +226,9 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
+" Fugitive Settings
+:set diffopt+=vertical
+
 " Syntastic Settings
 autocmd FileType javascript let b:syntastic_checkers =
        \ findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['jshint']
@@ -234,7 +240,8 @@ let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_ignore_files = ['*.html']
 let g:syntastic_mode_map={ 'mode': 'active',
                          \ 'active_filetypes': [],
-                         \ 'passive_filetypes': ['html', 'python', 'javascript'] }
+                         \ 'passive_filetypes': ['html', 'python', 'javascript',
+                         \ 'typescript'] }
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -242,14 +249,19 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
 
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
+let g:neocomplete#enable_at_startup = 1
+let g:neosnippet#snippets_directory=
+  \ '~/.vim/bundle/neosnippet-snippets/neosnippets,
+  \ ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
