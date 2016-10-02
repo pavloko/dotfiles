@@ -55,6 +55,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'       " Mark git changes in nerdTree
 Plugin 'valloric/matchtagalways'          " Shows current tag in HTML
 Plugin 'mattn/emmet-vim'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'wavded/vim-stylus'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'honza/vim-snippets'
@@ -63,9 +64,13 @@ Plugin 'quramy/tsuquyomi'                 " TypeScript
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'othree/yajs.vim'
+Plugin 'digitaltoad/vim-jade'
 
 " --- Python Development
 " ---------------------------------------
+Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'mitsuhiko/vim-python-combined'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 
@@ -154,6 +159,18 @@ set textwidth=80          " Line width = 80 characters
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 06. Custom Commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Jump tp last cursor position when opening a file
+" dont do it when writing a commit log entry
+autocmd BufReadPost * call SetCursorPosition()
+function! SetCursorPosition()
+    if &filetype !~ 'svn\|commit\c'
+        if line("'\"") > 0 && line("'\"") <= line("$")
+            exe "normal! g`\""
+            normal! zz
+        endif
+      end
+endfunction
+
 " Prettify JSON files making them easier to read
 command PrettyJSON %!python -m json.tool
 
@@ -170,14 +187,14 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+" py << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"   project_base_dir = os.environ['VIRTUAL_ENV']
+"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"   execfile(activate_this, dict(__file__=activate_this))
+" EOF
 
 " NERDTree Settings
 let NERDTreeIgnore=['\.pyc$', '\~$'] " ignore files in NERDTree
@@ -270,3 +287,33 @@ imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
+
+" Python Mode Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_rope = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+" Docs
+let g:pymode_doc = 0
+let g:pymode_doc_key = 'K'
+" Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_ignore="E501,W601,C0110,E302"
+" Virtualenv
+let g:pymode_lint_write = 1
+let g:pymode_virtualenv = 1
+" Breakpoints
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_key = '<leader>b'
+" Syntax
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+" Folding
+let g:pymode_folding = 1
+" Run code
+let g:pymode_run = 0
+" Jedi-vim Settings
+let g:jedi#popup_select_first = 0

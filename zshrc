@@ -3,18 +3,20 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 # Go Development
 export GOPATH=$HOME/Development/Go
 # PATH SETTINGS
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools:${GOPATH}/bin"
-# NVM
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${GOPATH}/bin"
+
+# NVM (Node Version Management)
 export NVM_DIR="$HOME/.nvm"
 source $(brew --prefix nvm)/nvm.sh
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
 # ZSH THEME SETTINGS
 ZSH_THEME="robbyrussell"
 
-# Virtual Environment
+plugins=(docker, python)
+
+# Python Virtual Environment
 export WORKON_HOME=$HOME/Development/Python/.virtualenvs
 export PROJECT_HOME=$HOME/Projects/ml
 source /usr/local/bin/virtualenvwrapper.sh
@@ -27,12 +29,10 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias cd..='cd ..'
 source $ZSH/oh-my-zsh.sh
-
 # mv, rm, cp
 alias mv='mv -v'
 alias rm='rm -i -v'
 alias cp='cp -v'
-
 # Git Aliases
 alias gd='git diff'
 alias gs='git status '
@@ -44,11 +44,9 @@ alias gk='gitk --all&'
 alias gx='gitx --all'
 alias got='git '
 alias get='git '
-
 # Vim Alias
 alias vim='mvim'
 alias vi='mvim -v'
-
 # Tmux Alias
 alias tl='tmux ls'
 alias ta='tmux attach -t '
