@@ -17,9 +17,9 @@ ZSH_THEME="robbyrussell"
 plugins=(docker, python)
 
 # Python Virtual Environment
-export WORKON_HOME=$HOME/Development/Python/.virtualenvs
-export PROJECT_HOME=$HOME/Projects/ml
-source /usr/local/bin/virtualenvwrapper.sh
+# export WORKON_HOME=$HOME/Development/Python/.virtualenvs
+# export PROJECT_HOME=$HOME/Projects/ml
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # Shell Aliases
 # General

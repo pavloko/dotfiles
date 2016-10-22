@@ -317,3 +317,6 @@ let g:pymode_folding = 1
 let g:pymode_run = 0
 " Jedi-vim Settings
 let g:jedi#popup_select_first = 0
+
+" Typescript
+autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript
