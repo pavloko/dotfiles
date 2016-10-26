@@ -7,8 +7,8 @@
 
 dir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="init.vim zshrc gitconfig gitignore tmux.conf"    # list of files/folders to symlink in homedir
-
+files="zshrc gitconfig gitignore tmux.conf"    # list of files/folders to symlink in homedir
+neovimdir=~/.config/nvim
 ##########
 
 # create dotfiles_old in homedir
@@ -28,6 +28,11 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+echo "Special case for NeoVim"
+mkdir -p $neovimdir
+echo "Linking init.vim to ~/.config/nvim/init.vim"
+ln -s $dir/init.vim ~/.config/nvim/init.vim
 
 # install_zsh () {
 # # Test to see if zshell is installed.  If it is:

@@ -41,9 +41,7 @@ alias gk='gitk --all&'
 alias gx='gitx --all'
 alias got='git '
 alias get='git '
-# Vim Alias
-alias vim='mvim'
-alias vi='mvim -v'
+
 # Tmux Alias
 alias tl='tmux ls'
 alias ta='tmux attach -t '
