@@ -35,7 +35,8 @@ call dein#add('vim-airline/vim-airline')
 call dein#add('scrooloose/nerdtree', {'om_cmd': 'NERDTreeToggle'})
 call dein#add('jistr/vim-nerdtree-tabs')
 call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-call dein#add('ctrlpvim/ctrlp.vimd') " Quick fileopen via CTRL+P
+call dein#add('ctrlpvim/ctrlp.vim') " Quick fileopen via CTRL+P
+call dein#add('neomake/neomake')
 call dein#add('Shougo/deoplete.nvim', {'on_i': 1})
 call dein#add('zchee/deoplete-jedi')
 call dein#add('zchee/deoplete-go', {'build': 'make'},{'on_ft': 'go'})
@@ -219,7 +220,6 @@ let g:tern_show_arguments_hints = 'on_hold'
 " Fugitive Settings
 :set diffopt+=vertical
 
-
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 
@@ -243,3 +243,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 " Typescript
 autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript
+
+" Neomake
+autocmd! BufWritePost,BufEnter * Neomake
