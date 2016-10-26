@@ -1,10 +1,7 @@
 # Android Development
 export ANDROID_HOME=$HOME/Library/Android/sdk
-# Go Development
-export GOPATH=$HOME/Development/Go
 # PATH SETTINGS
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${GOPATH}/bin"
-
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
 # NVM (Node Version Management)
 export NVM_DIR="$HOME/.nvm"
 source $(brew --prefix nvm)/nvm.sh
