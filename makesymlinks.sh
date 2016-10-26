@@ -8,7 +8,6 @@
 dir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 files="zshrc gitconfig gitignore tmux.conf"    # list of files/folders to symlink in homedir
-neovimdir=~/.config/nvim
 ##########
 
 # create dotfiles_old in homedir
@@ -30,8 +29,11 @@ for file in $files; do
 done
 
 echo "Special case for NeoVim"
-mkdir -p $neovimdir
-echo "Linking init.vim to ~/.config/nvim/init.vim"
+mkdir ~/.config/nvim
+mkdir -p ~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+git clone https://github.com/Shougo/dein.vim.git \
+          ~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+echo "Linking .vimrc to ~/.config/nvim/init.vim"
 ln -s $dir/init.vim ~/.config/nvim/init.vim
 
 # install_zsh () {
