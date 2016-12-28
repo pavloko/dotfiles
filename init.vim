@@ -63,8 +63,8 @@ call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
 " ---------------------------------------
 call dein#add('mattn/emmet-vim', {'on_ft': 'html'})
 call dein#add('valloric/matchtagalways', {'on_ft': 'html'})   " Shows current tag in HTML
-call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css', 'scss']})
-call dein#add('wavded/vim-stylus', {'on_ft': 'styl'})
+call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css', 'scss', 'sass', 'styl']})
+call dein#add('wavded/vim-stylus', {'of_ft': 'styl'})
 call dein#add('pangloss/vim-javascript')
 call dein#add('mxw/vim-jsx')
 call dein#add('othree/javascript-libraries-syntax.vim')
@@ -222,6 +222,14 @@ let g:tern_show_arguments_hints = 'on_hold'
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
+let g:loaded_python_provider = 1
+" Deoplete-jedi
+let g:deoplete#sources#jedi#show_docstring = 1
+autocmd CompleteDone * pclose! " Close preview after complete is done
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python_host_prog = '/usr/local/bin/python'
+
+let g:neomake_python_enabled_makers = ['pylint']
 
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1

@@ -1,5 +1,7 @@
 # Android Development
 export ANDROID_HOME=$HOME/Library/Android/sdk
+# Custom path for NLTK
+export NLTK_DATA=$HOME/Development/nltk_data
 # PATH SETTINGS
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
 # NVM (Node Version Management)
@@ -14,9 +16,11 @@ ZSH_THEME="robbyrussell"
 plugins=(docker, python)
 
 # Python Virtual Environment
-# export WORKON_HOME=$HOME/Development/Python/.virtualenvs
-# export PROJECT_HOME=$HOME/Projects/ml
-# source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects/experiments/
+export VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python3/'
+export VIRTUALENVWRAPPER_VIRTUALENV='/usr/local/bin/virtualenv'
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Shell Aliases
 # General
