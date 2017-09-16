@@ -23,8 +23,8 @@ set autoread            " autoreload files changed outside of Vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 02. Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
-call dein#begin(expand('~/.config/nvim/dein')) " plugins' root path
+set runtimepath+=/Users/pavloko/.config/nvim/repos/github.com/Shougo/dein.vim
+call dein#begin(expand('/Users/pavloko/.config/nvim')) " plugins' root path
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
@@ -67,6 +67,7 @@ call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css', 'scss', 'sass', 'styl'
 call dein#add('wavded/vim-stylus', {'of_ft': 'styl'})
 call dein#add('pangloss/vim-javascript')
 call dein#add('mxw/vim-jsx')
+call dein#add('alampros/vim-styled-jsx')
 call dein#add('othree/javascript-libraries-syntax.vim')
 call dein#add('1995eaton/vim-better-javascript-completion', {'on_ft': ['javascript']})
 call dein#add('Quramy/tsuquyomi', {'on_ft': 'typescript'})
@@ -147,6 +148,9 @@ set textwidth=80          " Line width = 80 characters
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 06. Custom Commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NVIM Settings
+:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
 " Jump tp last cursor position when opening a file
 " dont do it when writing a commit log entry
 autocmd BufReadPost * call SetCursorPosition()
@@ -226,10 +230,10 @@ let g:loaded_python_provider = 1
 " Deoplete-jedi
 let g:deoplete#sources#jedi#show_docstring = 1
 autocmd CompleteDone * pclose! " Close preview after complete is done
-let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python_host_prog = '/usr/local/bin/python'
-
-let g:neomake_python_enabled_makers = ['pylint']
+" let g:python2_host_prog = '/usr/local/bin/python2.7'
+let g:python3_host_prog = '/usr/local/bin/python3.6'
+let g:neomake_python_enabled_makers = ['flake8']
 
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
@@ -254,3 +258,7 @@ autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript
 
 " Neomake
 autocmd! BufWritePost,BufEnter * Neomake
+
+" Git commit message
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
