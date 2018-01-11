@@ -5,22 +5,25 @@ export NLTK_DATA=$HOME/Development/nltk_data
 # PATH SETTINGS
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
 # NVM (Node Version Management)
-export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
+# export NVM_DIR="$HOME/.nvm"
+# source $(brew --prefix nvm)/nvm.sh
 
+# Language settings
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 # ZSH THEME SETTINGS
 ZSH_THEME="robbyrussell"
 
-plugins=(docker, python)
+plugins=(git osx python docker)
 
 # Python Virtual Environment
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects/experiments/
-export VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python3/'
-export VIRTUALENVWRAPPER_VIRTUALENV='/usr/local/bin/virtualenv'
-source /usr/local/bin/virtualenvwrapper.sh
+# export VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python3/'
+# export VIRTUALENVWRAPPER_VIRTUALENV='/usr/local/bin/virtualenv'
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # Shell Aliases
 # General

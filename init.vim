@@ -128,8 +128,8 @@ set showmatch
 set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
 set visualbell
 nnoremap <esc> :noh<return><esc>  " use ESC to remove search highlight
-" set lazyredraw            " Optimize performace
-" set ttyfast
+set lazyredraw            " Optimize performace
+set ttyfast
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 05. Vim UI
