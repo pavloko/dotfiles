@@ -1,6 +1,6 @@
 # Google Cloud SDK
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+# source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+# source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 # Android Development
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -9,8 +9,8 @@ export NLTK_DATA=$HOME/Development/nltk_data
 # PATH SETTINGS
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools"
 # NVM (Node Version Management)
-# export NVM_DIR="$HOME/.nvm"
-# source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR="$HOME/.nvm"
+source $(brew --prefix nvm)/nvm.sh
 
 # Language settings
 export LANG=en_US.UTF-8
@@ -28,6 +28,9 @@ export PROJECT_HOME=$HOME/Projects/experiments/
 # export VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python3/'
 # export VIRTUALENVWRAPPER_VIRTUALENV='/usr/local/bin/virtualenv'
 # source /usr/local/bin/virtualenvwrapper.sh
+
+# PIP formatting issue
+export PIP_FORMAT=columns
 
 # Shell Aliases
 # General
