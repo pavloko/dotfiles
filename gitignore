@@ -1,4 +1,7 @@
-configuration files
+# Editor
+.idea/
+
+# configuration files
 .DS_Store
 Desktop.ini
 
@@ -14,6 +17,6 @@ Thumbs.db
 *.pyc
 
 # Application specific files
-venv
-node_modules
-.sass-cache
+venv/
+node_modules/
+.sass-cache/
