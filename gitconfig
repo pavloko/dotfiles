@@ -1,6 +1,6 @@
 [user]
 	name = pavloko
-  email = pavlo.kochubei@hotmail.com
+	email = pavlo.kochubei@gmail.com
 [credential]
   helper = osxkeychain
 [mergetool "opendiff"]
@@ -14,22 +14,31 @@
 	editor = nvim
 	quotepath = false
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-
-# [color]
-# 	ui = auto
+	excludesfile = ~/.gitignore
+[fetch]
+  prune = true
+[pager]
+	# insanely beautiful diffs ==> npm install -g diff-so-fancy
+	diff = diff-so-fancy | less --tabs=4 -RFX
+	show = diff-so-fancy | less --tabs=4 -RFX
+# [color "diff"]
+# 	meta = yellow bold
+# 	commit = green bold
+# 	frag = magenta bold
+# 	old = red bold
+# 	new = green bold
+# 	whitespace = red reverse
+# [color "diff-highlight"]
+# 	oldNormal = red bold
+# 	oldHighlight = "red bold 52"
+# 	newNormal = "green bold"
+# 	newHighlight = "green bold 22"
 # [color "branch"]
 # 	current = yellow reverse
 # 	local = yellow
 # 	remote = green
-# [color "diff"]
-# 	meta = yellow bold
-# 	frag = magenta bold
-# 	old = red bold
-# 	new = green bold
 # [color "status"]
 # 	added = yellow
 # 	changed = green
 # 	untracked = cyan
-
-[fetch]
-  prune = true
+# 
