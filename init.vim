@@ -23,8 +23,8 @@ set autoread            " autoreload files changed outside of Vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 02. Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set runtimepath+=/Users/pavloko/.config/nvim/repos/github.com/Shougo/dein.vim
-call dein#begin(expand('/Users/pavloko/.config/nvim')) " plugins' root path
+set runtimepath+=/Users/pavlo.kochubei/.config/nvim/repos/github.com/Shougo/dein.vim
+call dein#begin(expand('/Users/pavlo.kochubei/.config/nvim')) " plugins' root path
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
