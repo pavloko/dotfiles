@@ -14,6 +14,9 @@ RUST_PATH=$HOME/.cargo/bin
 export NLTK_DATA=$HOME/Development/nltk_data
 # PATH SETTINGS
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_PATH}:${RUST_PATH}"
+# FNM (Node Version Management)
+export PATH=$HOME/.fnm:$PATH
+eval `fnm env`
 # NVM (Node Version Management)
 # export NVM_DIR="$HOME/.nvm"
 # source $(brew --prefix nvm)/nvm.sh
