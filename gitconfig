@@ -8,8 +8,10 @@
 [merge]
   tool = opendiff
 [alias]
-	sla = log --oneline --decorate --graph --all
+  pom = pull origin master
 	glog = log -E -i --grep
+	sla = log --oneline --decorate --graph --all
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
 [core]
 	editor = nvim
 	quotepath = false
@@ -21,6 +23,11 @@
 	# insanely beautiful diffs ==> npm install -g diff-so-fancy
 	diff = diff-so-fancy | less --tabs=4 -RFX
 	show = diff-so-fancy | less --tabs=4 -RFX
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
 # [color "diff"]
 # 	meta = yellow bold
 # 	commit = green bold

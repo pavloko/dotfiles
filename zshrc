@@ -91,6 +91,8 @@ alias grep='grep --color=auto'
 # Lists all processes with open ports matching the given regex
 alias open-ports='lsof -Pn -i4 -i6 | grep LISTEN | grep'
 
+# FNM shortcut
+alias n='fnm'
 
 # Custom exports
 # Set EDITOR to /usr/local/bin/nvim if NeoVim is installed
@@ -98,6 +100,10 @@ if [ -f /usr/local/bin/nvim ]; then
   export EDITOR=/usr/local/bin/nvim
 fi
 alias tmux="TERM=screen-256color-bce tmux"
+
+function ip() {
+  ifconfig | grep inet
+}
 
 # Create a new directory and enter it
 function mkd() {
@@ -127,6 +133,15 @@ function docker-clean() {
 
   # remove dangling volumes
   docker volume rm $(docker volume ls -f dangling=true -q)
+}
+
+# DataRobot UI commands
+function dt() {
+  nps "test --spec=$1"   
+}
+
+function dtw() {
+  nps "test.watch --spec=$1"   
 }
 
 source $ZSH/oh-my-zsh.sh
