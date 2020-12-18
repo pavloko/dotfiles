@@ -23,8 +23,8 @@ set autoread            " autoreload files changed outside of Vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 02. Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set runtimepath+=/Users/pavlo.kochubei/.config/nvim/repos/github.com/Shougo/dein.vim
-call dein#begin(expand('/Users/pavlo.kochubei/.config/nvim')) " plugins' root path
+set runtimepath+=/Users/pavloko/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+call dein#begin(expand('/Users/pavloko/.config/nvim')) " plugins' root path
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
@@ -90,7 +90,7 @@ autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable           " enable syntax highlighting (previously syntax on).
 set background=dark
-let g:solarized_termcolors = 16
+let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 colorscheme solarized   " set colorscheme

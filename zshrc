@@ -15,8 +15,8 @@ export NLTK_DATA=$HOME/Development/nltk_data
 # PATH SETTINGS
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_PATH}:${RUST_PATH}"
 # NVM (Node Version Management)
-export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
+# export NVM_DIR="$HOME/.nvm"
+# source $(brew --prefix nvm)/nvm.sh
 
 export SHELL=/usr/local/bin/zsh 
 # Language settings
