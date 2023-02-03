@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Google Cloud SDK
 # source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 # source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
@@ -15,7 +17,7 @@ RUST_PATH=$HOME/.cargo/bin
 # Custom path for NLTK
 export NLTK_DATA=$HOME/Development/nltk_data
 # PATH SETTINGS
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${ANDROID_PATH}:${RUST_PATH}:${FLUTTER_PATH}"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin/:${ANDROID_PATH}:${RUST_PATH}:${FLUTTER_PATH}"
 # FNM (Node Version Management)
 export PATH=$HOME/.fnm:$PATH
 eval `fnm env`
@@ -173,3 +175,6 @@ source $ZSH/oh-my-zsh.sh
 
 export WORKSPACE="$HOME/workspace"
 export MMM_USER_NAME=pavlo.kochubei@datarobot.com
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
