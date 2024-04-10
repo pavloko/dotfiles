@@ -20,16 +20,18 @@ export NLTK_DATA=$HOME/Development/nltk_data
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin/:${ANDROID_PATH}:${RUST_PATH}:${FLUTTER_PATH}"
 # FNM (Node Version Management)
 export PATH=$HOME/.fnm:$PATH
-eval `fnm env`
+# eval `fnm env`
+# Homebrew Path
+export PATH=/opt/homebrew/bin:$PATH
 
 # Ruby and rbenv
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-eval "$(rbenv init -)"
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+# eval "$(rbenv init -)"
 
 # Avoid pyenv errors when running brew doctor
 alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 
-export SHELL=/usr/local/bin/zsh 
+export SHELL=/usr/local/bin/zsh
 # Language settings
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -162,11 +164,11 @@ function docker-clean() {
 
 # DataRobot UI commands
 function dt() {
-  nps "test --spec=$1"   
+  nps "test --spec=$1"
 }
 
 function dtw() {
-  nps "test.watch --spec=$1"   
+  nps "test.watch --spec=$1"
 }
 
 source $ZSH/oh-my-zsh.sh
